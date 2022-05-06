@@ -66,38 +66,40 @@ However, it is expensive to directly perform the eigenvalue decomposition on the
 ## The ASTGCN model structure
 The model is composed of two ASTGCN blocks followed by a final layer
 Original x (input) is (32, 307, 1, 12) - Block1 > (32, 307, 64, 12) - Block2 > (32, 307, 64, 12) - permute -> (32, 12, 307,64) # -final_conv -> (32, 12, 307, 1) -reshape-> (32,307,12) -> "The target"
-The model is the fusion of three independent components with the same structure, which are designed to respectively model the recent, daily-periodic and weekly-periodic dependencies of the historical data. This is discussed in the previous notebook (https://www.kaggle.com/elmahy/processing-traffic-data-for-deep-learning-projects).
+The model is the fusion of three independent components with the same structure, which are designed to respectively model the recent, daily-periodic and weekly-periodic dependencies of the historical data. 
 But in our case, we will only focus on the recent segment (last hour segment) i.e. X_h
+
+
 
 # Requirements:
 ## Library used:
-pytorch geometrical
-Numpy
-Matplotlib
-Torch_geometric 2.0.4
-Torch-scatter
-Torch-sparse
-tensorboaredx 2.5
+* pytorch geometrical
+* Numpy
+* Matplotlib
+* Torch_geometric 2.0.4
+* Torch-scatter
+* Torch-sparse
+* tensorboaredx 2.5
 
 # Configuration
 
 ## Data
-adj_filename: path of the adjacency matrix file
-graph_signal_matrix_filename: path of graph signal matrix file
-num_of_vertices: number of vertices
-points_per_hour: points per hour, in our dataset is 12
-num_for_predict: points to predict, in our model is 12
+* adj_filename: path of the adjacency matrix file
+* graph_signal_matrix_filename: path of graph signal matrix file
+* num_of_vertices: number of vertices
+* points_per_hour: points per hour, in our dataset is 12
+* num_for_predict: points to predict, in our model is 12
 
 ## Training
-model_name: ASTGCN
-ctx: set ctx = cpu, or set gpu-0, which means the first gpu device
-optimizer:  adam, 
-learning_rate: float, like 0.0001
-epochs: int, epochs to train=20
-batch_size: int
-num_of_weeks: int, how many weeks' data will be used
-num_of_days: int, how many days' data will be used
-num_of_hours: int, how many hours' data will be used
-K: int, K-order chebyshev polynomials will be used
+* model_name: ASTGCN
+* ctx: set ctx = cpu, or set gpu-0, which means the first gpu device
+* optimizer:  adam, 
+* learning_rate: float, like 0.0001
+* epochs: int, epochs to train=20
+* batch_size: int
+* num_of_weeks: int, how many weeks' data will be used
+* num_of_days: int, how many days' data will be used
+* num_of_hours: int, how many hours' data will be used
+* K: int, K-order chebyshev polynomials will be used
 
 
