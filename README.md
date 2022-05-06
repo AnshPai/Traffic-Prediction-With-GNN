@@ -57,6 +57,11 @@ Original x (input) is (32, 307, 1, 12) - Block1 > (32, 307, 64, 12) - Block2 > (
 The model is the fusion of three independent components with the same structure, which are designed to respectively model the recent, daily-periodic and weekly-periodic dependencies of the historical data. 
 But in our case, we will only focus on the recent segment (last hour segment) i.e. X_h
 
+<p align="center">
+  <img src="<p align="center">
+  <img src="https://i.ibb.co/G5jkKvr/spatial2.png" width="400">
+</p>" width="400">
+</p>
 
 
 # Requirements:
