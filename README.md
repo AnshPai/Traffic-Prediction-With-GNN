@@ -12,8 +12,6 @@ In the temporal dimension, there exist correlations between the traffic conditio
   <img src="https://i.ibb.co/KwXCqJx/temp-attention.png" width="400">
 </p>
 
-To understand the equation :
-
 It learns to attend (focus) on which part of the time segement used as input. In our case we have 12-time points So it will generate 12 by 12 weights.
 
 ## Spatial attention layer
