@@ -16,12 +16,6 @@ To understand the equation :
 
 It learns to attend (focus) on which part of the time segement used as input. In our case we have 12-time points So it will generate 12 by 12 weights.
 
-<p align="center">
-  <img src="https://i.ibb.co/NZ4fh4k/atten2.jpg" width="400">
-</p>
-
-
-
 ## Spatial attention layer
 
 In the spatial dimension, the traffic conditions of different locations have influence among each other and the mutual influence is highly dynamic. Here, we use an attention mechanism (Feng et al. 2017) to adaptively capture the dynamic correlations between nodes in the spatial dimension.
@@ -35,10 +29,6 @@ In the spatial dimension, the traffic conditions of different locations have inf
 </p>
 
 The same as with the temporal attention; however, here the attention weights will be used inside a Graph convolution layer
-
-<p align="center">
-  <img src="https://i.ibb.co/stTfTFM/spat2.jpg" width="400">
-</p>
 
 ## Spectral graph analysis on the spatial part
 Since the spatial part is represented as a graph, we will apply graph convolution to aggregate messages from neighbor nodes. The type of graph convolution that we are going to use is spectral convolution.
