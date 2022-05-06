@@ -58,9 +58,7 @@ The model is the fusion of three independent components with the same structure,
 But in our case, we will only focus on the recent segment (last hour segment) i.e. X_h
 
 <p align="center">
-  <img src="<p align="center">
-  <img src="https://i.ibb.co/G5jkKvr/spatial2.png" width="400">
-</p>" width="400">
+  <img src="https://github.com/Davidham3/ASTGCN/blob/master/figures/model.png" width="400">
 </p>
 
 
