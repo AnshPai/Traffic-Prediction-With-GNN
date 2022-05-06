@@ -3,6 +3,11 @@
 ## About Dataset:
 We validate our model on two highway traffic datasets PeMSD4 from California. The datasets are collected by the Caltrans Performance Measurement System (PeMS) in real time every 30 seconds. The traffic data are aggregated into every 5-minute interval from the raw data. The system has more than 39,000 detectors deployed on the highway in the major metropolitan areas in California. Geographic information about the sensor stations are recorded in the datasets. There are three kinds of traffic measurements considered in our experiments, including total flow, average speed, and average occupancy.
 
+## Data splitting
+* 10181 data/target examples will be used as the training set ( 35 days )
+* 3394 data/target examples will be used as the validation set (12 days)
+* 3394 data/target examples will be used as the testing set (12 days)
+
 # Model layers - 
 ## Temporal attention layer
 
@@ -93,4 +98,16 @@ But in our case, we will only focus on the recent segment (last hour segment) i.
 * num_of_hours: int, how many hours' data will be used
 * K: int, K-order chebyshev polynomials will be used
 
+# Reference :
+* Research paper by:Shengnan Guo
+* Beijing Jiaotong University
+* Youfang Lin
+* Beijing Jiaotong University
+* Ning Feng
+* Beijing Jiaotong University
+* Chao Song
+* Beijing Jiaotong University
+* Huaiyu Wan
+* Beijing Jiaotong University
+* Link :https://ojs.aaai.org//index.php/AAAI/article/view/3881
 
