@@ -8,26 +8,37 @@ We validate our model on two highway traffic datasets PeMSD4 from California. Th
 
 In the temporal dimension, there exist correlations between the traffic conditions in different time slices, and the correlations are also varying under different situations. Likewise, we use an attention mechanism to adaptively attach different importance to data.
 
-<img src="https://i.ibb.co/KwXCqJx/temp-attention.png" width="400">
+<p align="center">
+  <img src="https://i.ibb.co/KwXCqJx/temp-attention.png" width="400">
+</p>
 
 To understand the equation :
 
 It learns to attend (focus) on which part of the time segement used as input. In our case we have 12-time points So it will generate 12 by 12 weights.
 
-<img src="https://i.ibb.co/NZ4fh4k/atten2.jpg" width="400">
+<p align="center">
+  <img src="https://i.ibb.co/NZ4fh4k/atten2.jpg" width="400">
+</p>
+
 
 
 ## Spatial attention layer
 
 In the spatial dimension, the traffic conditions of different locations have influence among each other and the mutual influence is highly dynamic. Here, we use an attention mechanism (Feng et al. 2017) to adaptively capture the dynamic correlations between nodes in the spatial dimension.
 
-<img src="https://i.ibb.co/PGnj4MR/spatial1.png" width="400">
+<p align="center">
+  <img src="https://i.ibb.co/PGnj4MR/spatial1.png" width="400">
+</p>
 
-<img src="https://i.ibb.co/G5jkKvr/spatial2.png" width="400">
+<p align="center">
+  <img src="https://i.ibb.co/G5jkKvr/spatial2.png" width="400">
+</p>
 
 The same as with the temporal attention; however, here the attention weights will be used inside a Graph convolution layer
 
-<img src="https://i.ibb.co/stTfTFM/spat2.jpg" width="400">
+<p align="center">
+  <img src="https://i.ibb.co/stTfTFM/spat2.jpg" width="400">
+</p>
 
 ## Spectral graph analysis on the spatial part
 Since the spatial part is represented as a graph, we will apply graph convolution to aggregate messages from neighbor nodes. The type of graph convolution that we are going to use is spectral convolution.
@@ -58,14 +69,26 @@ Original x (input) is (32, 307, 1, 12) - Block1 > (32, 307, 64, 12) - Block2 > (
 The model is the fusion of three independent components with the same structure, which are designed to respectively model the recent, daily-periodic and weekly-periodic dependencies of the historical data. This is discussed in the previous notebook (https://www.kaggle.com/elmahy/processing-traffic-data-for-deep-learning-projects).
 But in our case, we will only focus on the recent segment (last hour segment) i.e. X_h
 
-Configuration
-Data
+# Requirements:
+## Library used:
+pytorch geometrical
+Numpy
+Matplotlib
+Torch_geometric 2.0.4
+Torch-scatter
+Torch-sparse
+tensorboaredx 2.5
+
+# Configuration
+
+## Data
 adj_filename: path of the adjacency matrix file
 graph_signal_matrix_filename: path of graph signal matrix file
 num_of_vertices: number of vertices
 points_per_hour: points per hour, in our dataset is 12
 num_for_predict: points to predict, in our model is 12
-Training
+
+## Training
 model_name: ASTGCN
 ctx: set ctx = cpu, or set gpu-0, which means the first gpu device
 optimizer:  adam, 
@@ -76,3 +99,5 @@ num_of_weeks: int, how many weeks' data will be used
 num_of_days: int, how many days' data will be used
 num_of_hours: int, how many hours' data will be used
 K: int, K-order chebyshev polynomials will be used
+
+
